@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "Llista.h"
+#include "llistabidord.h"
 
 //Creem la llista Bidireccional Ordenada
 LlistaBID LLISTABIDORD_crea(){
