@@ -8,18 +8,19 @@ int main (){
 	LlistaBID l;
    	int	num = 3;
 	int a = 0;
+
 	//Comprova que funcioni el llista crea
 	l = LLISTABIDORD_crea();
 		if (LLISTABIDORD_buida(l)){
-		printf("Funcio Buida funciona");
+		printf("Funcio Buida funciona\n");
 		}
 
 	//Comprova que funcioni el insereix davant, el retrocedeix, el buida, el esborra i  el consulta
 	LLISTABIDORD_insereixdavant(&l, num);
 	if (LLISTABIDORD_buida(l)){
-		printf("Buida no funciona");
+		printf("Buida no funciona\n");
 	}else{
-		printf("Buida funciona");
+		printf("Buida funciona\n");
 	}
 	LLISTABIDORD_retrocedeix(&l);
 	LLISTABIDORD_esborra(&l);
@@ -53,6 +54,24 @@ int main (){
 		LLISTABIDORD_retrocedeix(&l);	
 		a = LLISTABIDORD_consulta(l);
 		printf("|%d|\n", a);
+	}
+
+	//Comprova que funcioni insereix davant ordenat i insereix darrera ordenat
+	LLISTABIDORD_insereixdavant(&l, 3);
+	LLISTABIDORD_insereixdavant(&l, 5);
+	LLISTABIDORD_insereixdavant(&l, 8);
+	LLISTABIDORD_insereixdavant(&l, 12);
+	LLISTABIDORD_insereixdavant(&l, 15);
+	LLISTABIDORD_vesinici(&l);
+	LLISTABIDORD_avanca(&l);
+	LLISTABIDORD_avanca(&l);
+	LLISTABIDORD_insereixdavantordenat(&l, 4);
+	LLISTABIDORD_insereixdarreraordenat(&l, 13);
+	LLISTABIDORD_vesinici(&l);
+	while (l.pdi != l.ult){
+	a = LLISTABIDORD_consulta(l);
+	printf("-%d-\n", a);
+	l.pdi = l.pdi->seg;
 	}
 
 	// Comprova que funcioni el destrueix
