@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Llista.h"
+#include "llistabidord.h"
 
 // Aquí farem el testing
 int main (){
