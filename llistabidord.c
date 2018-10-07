@@ -134,37 +134,54 @@ void LLISTABIDORD_insereixdarrera(LlistaBID *l, int num){
   }
 }
 
-/*void LLISTABIDORD_insereixdavantordenat(LlistaBID *l, int num){
-	printf("1,5");
+void LLISTABIDORD_insereixdavantordenat(LlistaBID *l, int num){
 	int trobat = 0;
-	l->pdi = l->cap;
-printf("3");
+	int i = 0;
+
 	if(l->cap->seg == l->ult){
 		trobat = 1;
 	}
-	printf("4");
-  	while (!trobat) {
-    		if (l->pdi->seg->num < num) {
-      			l->pdi = l->pdi->seg;
+
+  	while (!trobat && !LLISTABIDORD_inici(*l)) {
+    		if (l->pdi->num > num) {
+      			l->pdi = l->pdi->ant;
+				i++;
     		}
     		else{
       			trobat = 1;
+				if ( i != 0){
+					l->pdi = l->pdi->seg;
+				}
     		}
 	}
-	printf("5");
+	if (trobat == 0){
+		l->pdi = l->pdi->seg;
+	}
   	LLISTABIDORD_insereixdavant(l, num);
 }
 
 void LLISTABIDORD_insereixdarreraordenat(LlistaBID *l, int num) {
-  int trobat = 0;
-  l->pdi = l->cap;
-  while (!trobat) {
-    if (l->pdi->seg->num < num) {
-      l->pdi = l->pdi->seg;
-    }
-    else{
-      trobat = 1;
-    }
-  }
+	int trobat = 0;
+	int i = 0;
+  	if (l->cap-> seg == l->ult){
+  		trobat = 1;
+  	}
+
+  	while (!trobat && !LLISTABIDORD_fi(*l)) {
+    	if (l->pdi->num < num) {
+     		l->pdi = l->pdi->seg;
+			i++;
+    	}
+    	else{
+      		trobat = 1;
+			if (i != 0){
+	  			l->pdi = l->pdi->ant;
+			}
+    	}
+	}
+	if (trobat == 0){
+		l->pdi = l->pdi->ant;
+	}
+  
 	LLISTABIDORD_insereixdarrera(l, num);
-}*/
+}
